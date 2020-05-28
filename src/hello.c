@@ -146,7 +146,7 @@ main (int argc, char *argv[])
 #endif
 
   /* Having initialized gettext, get the default message. */
-  greeting_msg = _("Hello, world!");
+  greeting_msg = _("Life is like a box of chocolates.  You never know what your gonna get.");
 
   /* Even exiting has subtleties.  On exit, if any writes failed, change
      the exit status.  The /dev/full device on GNU/Linux can be used for
