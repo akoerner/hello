@@ -1,4 +1,4 @@
-#!/env/bin bash
+#!/usr/bin/env bash
 
 
 DEB_PACKAGE_TEMPLATE_DIRECTORY="package/DEBIAN"
@@ -6,7 +6,9 @@ DEB_PACKAGE_TEMPLATE_DIRECTORY="package/DEBIAN"
 GIT_BRANCH=$(git branch | awk '{print $2}')
 
 PACKAGE=$(grep -hr "Package" $DEB_PACKAGE_TEMPLATE_DIRECTORY/control | awk '{print $2}')
-VERSION=$(grep -hr "Version" $DEB_PACKAGE_TEMPLATE_DIRECTORY/control | awk '{print $2}')-$GIT_BRANCH
+VERSION=$(grep -hr "Version" $DEB_PACKAGE_TEMPLATE_DIRECTORY/control | awk '{print $2}')
+VERSION="${VERSION}-${GIT_BRANCH}"
+
 ARCHITECTURE=$(grep -hr "Architecture" $DEB_PACKAGE_TEMPLATE_DIRECTORY/control | awk '{print $2}')
 INSTALLATION_DIRECTORY_BASE="/usr/local/bin"
 OUTPUT_DIRECTORY="package"
