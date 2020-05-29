@@ -3,8 +3,10 @@
 
 DEB_PACKAGE_TEMPLATE_DIRECTORY="package/DEBIAN"
 
+GIT_BRANCH=$(git branch | awk '{print $2}')
+
 PACKAGE=$(grep -hr "Package" $DEB_PACKAGE_TEMPLATE_DIRECTORY/control | awk '{print $2}')
-VERSION=$(grep -hr "Version" $DEB_PACKAGE_TEMPLATE_DIRECTORY/control | awk '{print $2}')
+VERSION=$(grep -hr "Version" $DEB_PACKAGE_TEMPLATE_DIRECTORY/control | awk '{print $2}')-$GIT_BRANCH
 ARCHITECTURE=$(grep -hr "Architecture" $DEB_PACKAGE_TEMPLATE_DIRECTORY/control | awk '{print $2}')
 INSTALLATION_DIRECTORY_BASE="/usr/local/bin"
 OUTPUT_DIRECTORY="package"
@@ -23,5 +25,9 @@ DESTDIR=$RELEASE_DIRECTORY make -j4 install
 
 
 SHA256SUM=$(find $RELEASE_DIRECTORY -type f | grep -v DEBIAN) | sed 's,\./,/,g'
+
+echo "Sha256 File Checksums:"
+echo "${SHA256SUM}"
+
 
 dpkg-deb --build $RELEASE_DIRECTORY
