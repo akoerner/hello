@@ -1,0 +1,11 @@
+Package: gnu-hello
+Version: 1.0-1
+Section: base
+Priority: optional
+Urgency: LOW
+Replaces: gnu-hello
+Architecture: i386
+Maintainer: TS-DLR SYA
+Description: gnu hello program
+Checksums-Sha256: 0
+
