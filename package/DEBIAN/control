@@ -4,7 +4,7 @@ Section: base
 Priority: optional
 Urgency: LOW
 Replaces: gnu-hello
-Architecture: i386
+Architecture: amd64
 Maintainer: TS-DLR SYA
 Description: gnu hello program
 Checksums-Sha256: 0
